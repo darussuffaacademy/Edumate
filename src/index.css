@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Baloo 2", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-primary: #1a1f4e;
+  --color-brand-accent: #f7c948;
+  --color-brand-teal: #00bfa5;
+  --color-brand-coral: #ff6b6b;
+  --color-brand-purple: #7c4dff;
+  --color-brand-sky: #29b6f6;
+  --color-brand-green: #66bb6a;
+  --color-brand-bg: #f8fafc;
+}
+
+.dark {
+  --color-brand-bg: #0f172a;
+}
+
+/* Configure class-based dark mode for Tailwind 4 */
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    @apply bg-brand-bg text-brand-primary transition-colors duration-300;
+  }
+
+  .dark body {
+    @apply bg-slate-950 text-slate-100;
+  }
+}

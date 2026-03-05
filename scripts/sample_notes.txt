@@ -1,0 +1,10 @@
+Photosynthesis - Class 10 Science Notes
+
+Photosynthesis is the process by which green plants make their own food using sunlight, carbon dioxide, and water. Plants are called autotrophs because they can produce their own food.
+
+Chloroplasts contain chlorophyll, the green pigment that absorbs light energy. The process consists of light-dependent reactions (which require sunlight) and light-independent or dark reactions (which do not require sunlight directly).
+
+The overall balanced equation for photosynthesis is:
+6CO2 + 6H2O -> C6H12O6 + 6O2
+
+Factors affecting photosynthesis include light intensity, carbon dioxide concentration, and temperature. As light intensity increases, the rate of photosynthesis increases until it reaches a plateau.

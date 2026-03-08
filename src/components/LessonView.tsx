@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { BookOpen, FlaskConical, PenTool, Volume2, CheckCircle2, PlayCircle, FileText, HelpCircle, Info, ArrowLeft, Clock, GripVertical } from 'lucide-react';
 import { Language } from '../data/curriculum';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import VirtualLab from './VirtualLab';
 import ChemistryInteractive from './ChemistryInteractive';
 import SoundWavesInteractive from './SoundWavesInteractive';
@@ -85,6 +87,50 @@ export default function LessonView({ lesson, language, onBack, subjectId, select
         {(language === 'en' || isBilingual) && <span className={`block ${isBilingual ? "text-slate-800 dark:text-slate-200" : ""}`}>{enText}</span>}
         {(language === 'ml' || isBilingual) && <span className={`block ${isBilingual ? "text-slate-600 dark:text-slate-400 text-sm mt-1" : ""}`}>{mlText}</span>}
       </span>
+    );
+  };
+
+  const MarkdownContent = ({ enText, mlText, className = "" }: any) => {
+    const isBilingual = language === 'bilingual';
+    
+    if (isBilingual) {
+      const enBlocks = (enText || '').split('\n\n');
+      const mlBlocks = (mlText || '').split('\n\n');
+      const maxBlocks = Math.max(enBlocks.length, mlBlocks.length);
+      
+      return (
+        <div className={`mb-4 ${className}`}>
+          {Array.from({ length: maxBlocks }).map((_, i) => (
+            <div key={i} className="mb-6">
+              {enBlocks[i] && (
+                <div className="prose prose-slate dark:prose-invert max-w-none text-slate-800 dark:text-slate-200">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{enBlocks[i]}</ReactMarkdown>
+                </div>
+              )}
+              {mlBlocks[i] && (
+                <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 text-sm mt-2">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{mlBlocks[i]}</ReactMarkdown>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    return (
+      <div className={`mb-4 ${className}`}>
+        {language === 'en' && (
+          <div className="prose prose-slate dark:prose-invert max-w-none">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{enText}</ReactMarkdown>
+          </div>
+        )}
+        {language === 'ml' && (
+          <div className="prose prose-slate dark:prose-invert max-w-none">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{mlText}</ReactMarkdown>
+          </div>
+        )}
+      </div>
     );
   };
 
@@ -431,10 +477,10 @@ export default function LessonView({ lesson, language, onBack, subjectId, select
                 {language === 'en' ? 'Learning Objectives' : language === 'ml' ? 'പഠന ലക്ഷ്യങ്ങൾ' : 'Learning Objectives / പഠന ലക്ഷ്യങ്ങൾ'}
               </h3>
               <ul className="space-y-2">
-                {lesson.learning_objectives.map((lo: any) => (
-                  <li key={lo.id} className="flex items-start gap-2 text-slate-700 dark:text-slate-300 text-sm">
+                {lesson.learning_objectives.map((lo: any, idx: number) => (
+                  <li key={lo.id || idx} className="flex items-start gap-2 text-slate-700 dark:text-slate-300 text-sm">
                     <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 mt-1.5 flex-shrink-0"></span>
-                    <span>{renderInline(lo.text)}</span>
+                    <span>{renderInline(lo.text || lo)}</span>
                   </li>
                 ))}
               </ul>
@@ -502,10 +548,10 @@ export default function LessonView({ lesson, language, onBack, subjectId, select
                     {lesson.content.blocks.map((block: any, idx: number) => renderBlock(block, idx))}
                   </div>
                 ) : (
-                  <section className="prose prose-slate dark:prose-invert max-w-none">
+                  <section className="mt-8">
                     <div className="flex items-start gap-4 group">
-                      <div className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 flex-1">
-                        <TextContent enText={lesson.content.core.en} mlText={lesson.content.core.ml} />
+                      <div className="flex-1">
+                        <MarkdownContent enText={lesson.content.core.en} mlText={lesson.content.core.ml} />
                       </div>
                       <button className="p-2 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 rounded-full transition-colors opacity-0 group-hover:opacity-100" title="Listen (TTS)">
                         <Volume2 className="w-5 h-5" />
@@ -538,12 +584,6 @@ export default function LessonView({ lesson, language, onBack, subjectId, select
               )
             )}
 
-import QuizView from './QuizView';
-
-// ... existing imports ...
-
-// ... inside the component ...
-
             {activeTab === 'quiz' && (
               <QuizView questions={lesson.quiz} language={language} />
             )}
@@ -551,7 +591,7 @@ import QuizView from './QuizView';
             {activeTab === 'sample_questions' && lesson.sample_questions && (
               <div className="space-y-8">
                 {lesson.sample_questions.map((q: any, idx: number) => (
-                  <div key={q.q_id} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 shadow-sm">
+                  <div key={q.q_id || idx} className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 shadow-sm">
                     <div className="flex items-center gap-2 mb-4">
                       <span className="bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-bold px-2 py-1 rounded">Q{idx + 1}</span>
                     </div>

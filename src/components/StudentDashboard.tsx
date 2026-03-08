@@ -6,6 +6,7 @@ import SubjectGrid from './SubjectGrid';
 import ChapterList from './ChapterList';
 import LessonView from './LessonView';
 import ThemeToggle from './ThemeToggle';
+import TextSizeToggle from './TextSizeToggle';
 
 export default function StudentDashboard({ selectedClass, language, setLanguage, onChangeClass }: { selectedClass: string, language: Language, setLanguage: (l: Language) => void, onChangeClass: () => void }) {
   const [selectedSubjectId, setSelectedSubjectId] = useState<string | null>(null);
@@ -131,6 +132,7 @@ export default function StudentDashboard({ selectedClass, language, setLanguage,
             </h2>
           </div>
           <div className="flex items-center gap-1 md:gap-4">
+            <TextSizeToggle />
             <ThemeToggle />
             <button
               onClick={cycleLanguage}

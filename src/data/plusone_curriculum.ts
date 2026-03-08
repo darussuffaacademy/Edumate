@@ -6,6 +6,12 @@ import { plusOneEnglishUnit4 } from './plusone_english_unit4';
 import { plusOneEnglishUnit5 } from './plusone_english_unit5';
 import { plusOneEnglishUnit6 } from './plusone_english_unit6';
 import { plusOneAccountancyUnit1 } from './plusone_accountancy_unit1';
+import { plusOneAccountancyUnit2 } from './plusone_accountancy_unit2';
+import { plusOneAccountancyUnit3 } from './plusone_accountancy_unit3';
+import { plusOneAccountancyUnit4 } from './plusone_accountancy_unit4';
+import { plusOneAccountancyUnit5 } from './plusone_accountancy_unit5';
+import { plusOneAccountancyUnit6 } from './plusone_accountancy_unit6';
+import { plusOneAccountancyUnit7 } from './plusone_accountancy_unit7';
 
 export const plusOneCurriculum: Subject[] = [
   {
@@ -56,6 +62,36 @@ export const plusOneCurriculum: Subject[] = [
         id: "u-acc-1",
         title: { en: "Introduction to Accounting", ml: "അക്കൗണ്ടിംഗിലേക്ക് പരിചയം" },
         lessons: [plusOneAccountancyUnit1]
+      },
+      {
+        id: "u-acc-2",
+        title: { en: "Theory Base of Accounting", ml: "അക്കൗണ്ടിംഗിന്റെ സൈദ്ധാന്തിക അടിസ്ഥാനം" },
+        lessons: [plusOneAccountancyUnit2]
+      },
+      {
+        id: "u-acc-3",
+        title: { en: "Recording of Transactions - I", ml: "ഇടപാടുകൾ രേഖപ്പെടുത്തൽ - I" },
+        lessons: [plusOneAccountancyUnit3]
+      },
+      {
+        id: "u-acc-4",
+        title: { en: "Recording of Transactions - II", ml: "ഇടപാടുകൾ രേഖപ്പെടുത്തൽ - II" },
+        lessons: [plusOneAccountancyUnit4]
+      },
+      {
+        id: "u-acc-5",
+        title: { en: "Bank Reconciliation Statement", ml: "ബാങ്ക് റീകൺസിലിയേഷൻ സ്റ്റേറ്റ്മെന്റ്" },
+        lessons: [plusOneAccountancyUnit5]
+      },
+      {
+        id: "u-acc-6",
+        title: { en: "Trial Balance and Rectification of Errors", ml: "ട്രയൽ ബാലൻസും തെറ്റുകൾ തിരുത്തലും" },
+        lessons: [plusOneAccountancyUnit6]
+      },
+      {
+        id: "u-acc-7",
+        title: { en: "Depreciation, Provisions and Reserves", ml: "തേയ്മാനം, വ്യവസ്ഥകൾ, കരുതൽ ധനം" },
+        lessons: [plusOneAccountancyUnit7]
       }
     ]
   },

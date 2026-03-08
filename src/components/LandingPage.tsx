@@ -1,6 +1,7 @@
 import { Globe, GraduationCap, BookOpen } from 'lucide-react';
 import { Language } from '../data/curriculum';
 import ThemeToggle from './ThemeToggle';
+import TextSizeToggle from './TextSizeToggle';
 
 export default function LandingPage({ onSelectClass, language, setLanguage }: { onSelectClass: (c: string) => void, language: Language, setLanguage: (l: Language) => void }) {
   const classes = [
@@ -26,6 +27,7 @@ export default function LandingPage({ onSelectClass, language, setLanguage }: { 
   return (
     <div className="min-h-screen bg-brand-bg flex flex-col font-sans text-brand-primary dark:text-slate-100 transition-colors duration-300">
       <header className="p-6 flex justify-end gap-4 items-center">
+        <TextSizeToggle />
         <ThemeToggle />
         <button
           onClick={cycleLanguage}

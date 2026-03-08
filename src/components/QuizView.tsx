@@ -60,14 +60,14 @@ export default function QuizView({ questions, language }: QuizViewProps) {
   // Helper to normalize question data
   const normalizeQuestion = (q: any): QuizQuestion => {
     return {
-      q_id: q.q_id,
+      q_id: q.q_id || q.id || Math.random().toString(36).substring(7),
       type: q.type || (q.options ? 'mcq' : 'short_answer'),
       stem: q.stem || q.question,
       options: q.options?.map((opt: any) => ({
         k: opt.k || opt.id,
         text: opt.text
       })) || [],
-      answer: typeof q.answer === 'object' && q.answer.id ? q.answer.id : q.answer,
+      answer: typeof q.answer === 'object' && q.answer.id ? q.answer.id : (q.answer || q.correctAnswer),
       explanation: q.explanation
     };
   };
@@ -154,9 +154,9 @@ export default function QuizView({ questions, language }: QuizViewProps) {
               {language === 'en' ? 'Number of Questions' : language === 'ml' ? 'ചോദ്യങ്ങളുടെ എണ്ണം' : 'Number of Questions / ചോദ്യങ്ങളുടെ എണ്ണം'}
             </label>
             <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
-              {[10, 20, 30, 50, questions.length].map(num => (
+              {[10, 20, 30, 50, questions.length].map((num, idx) => (
                 <button
-                  key={num}
+                  key={`${num}-${idx}`}
                   onClick={() => setQuestionCount(num)}
                   className={`py-2 px-3 rounded-lg text-sm font-bold border transition-all ${
                     questionCount === num

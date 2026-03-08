@@ -12,6 +12,7 @@ import { plusOneAccountancyUnit4 } from './plusone_accountancy_unit4';
 import { plusOneAccountancyUnit5 } from './plusone_accountancy_unit5';
 import { plusOneAccountancyUnit6 } from './plusone_accountancy_unit6';
 import { plusOneAccountancyUnit7 } from './plusone_accountancy_unit7';
+import { plusOneAccountancyUnit8 } from './plusone_accountancy_unit8';
 
 export const plusOneCurriculum: Subject[] = [
   {
@@ -92,6 +93,11 @@ export const plusOneCurriculum: Subject[] = [
         id: "u-acc-7",
         title: { en: "Depreciation, Provisions and Reserves", ml: "തേയ്മാനം, വ്യവസ്ഥകൾ, കരുതൽ ധനം" },
         lessons: [plusOneAccountancyUnit7]
+      },
+      {
+        id: "u-acc-8",
+        title: { en: "Bill of Exchange", ml: "ബിൽ ഓഫ് എക്സ്ചേഞ്ച് (വിനിമയ ബില്ലുകൾ)" },
+        lessons: [plusOneAccountancyUnit8]
       }
     ]
   },

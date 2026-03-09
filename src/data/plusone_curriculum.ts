@@ -13,6 +13,13 @@ import { plusOneAccountancyUnit5 } from './plusone_accountancy_unit5';
 import { plusOneAccountancyUnit6 } from './plusone_accountancy_unit6';
 import { plusOneAccountancyUnit7 } from './plusone_accountancy_unit7';
 import { plusOneAccountancyUnit8 } from './plusone_accountancy_unit8';
+import { plusOneIslamicHistoryUnit1 } from './plusone_islamic_history_unit1';
+import { plusOneIslamicHistoryUnit2 } from './plusone_islamic_history_unit2';
+import { plusOneIslamicHistoryUnit3 } from './plusone_islamic_history_unit3';
+import { plusOneIslamicHistoryUnit4 } from './plusone_islamic_history_unit4';
+import { plusOneIslamicHistoryUnit5 } from './plusone_islamic_history_unit5';
+import { plusOneIslamicHistoryUnit6 } from './plusone_islamic_history_unit6';
+import { plusOneIslamicHistoryUnit7 } from './plusone_islamic_history_unit7';
 
 export const plusOneCurriculum: Subject[] = [
   {
@@ -50,6 +57,49 @@ export const plusOneCurriculum: Subject[] = [
         id: "u-eng-6",
         title: { en: "Leaps and Bounds", ml: "കുതിച്ചുചാട്ടങ്ങൾ" },
         lessons: [plusOneEnglishUnit6]
+      }
+    ]
+  },
+  {
+    id: "sub-islamic-history",
+    title: { en: "Islamic History", ml: "ഇസ്ലാമിക ചരിത്രം" },
+    icon: "🕌",
+    color: "bg-[#f57c00]",
+    units: [
+      {
+        id: "u-isl-1",
+        title: { en: "Introduction to Islamic History and Culture", ml: "ഇസ്ലാമിക ചരിത്രത്തിലേക്കും സംസ്കാരത്തിലേക്കും ഒരു ആമുഖം" },
+        lessons: [plusOneIslamicHistoryUnit1]
+      },
+      {
+        id: "u-isl-2",
+        title: { en: "Arabia: The Cradle of Islam", ml: "അറേബ്യ: ഇസ്ലാമിന്റെ കളിത്തൊട്ടിൽ" },
+        lessons: [plusOneIslamicHistoryUnit2]
+      },
+      {
+        id: "u-isl-3",
+        title: { en: "The Prophetic Period: Makkah", ml: "പ്രവാചക കാലഘട്ടം: മക്ക" },
+        lessons: [plusOneIslamicHistoryUnit3]
+      },
+      {
+        id: "u-isl-4",
+        title: { en: "Prophetic Period: Madina", ml: "പ്രവാചക കാലഘട്ടം: മദീന" },
+        lessons: [plusOneIslamicHistoryUnit4]
+      },
+      {
+        id: "u-isl-5",
+        title: { en: "The Khilafat (632 - 661 CE)", ml: "ഖിലാഫത്ത് (ക്риസ്തുവർഷം 632 - 661)" },
+        lessons: [plusOneIslamicHistoryUnit5]
+      },
+      {
+        id: "u-isl-6",
+        title: { en: "The Umayyads", ml: "ഉമയ്യത്തുകൾ" },
+        lessons: [plusOneIslamicHistoryUnit6]
+      },
+      {
+        id: "u-isl-7",
+        title: { en: "Advent of Islam in Kerala", ml: "കേരളത്തിലെ ഇസ്ലാമിന്റെ ആഗമനം" },
+        lessons: [plusOneIslamicHistoryUnit7]
       }
     ]
   },

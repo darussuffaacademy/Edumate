@@ -66,7 +66,7 @@ export default function StudentDashboard({ selectedClass, language, setLanguage,
       {/* Sidebar */}
       <div className={`fixed inset-y-0 left-0 z-30 w-64 md:w-56 lg:w-64 bg-white dark:bg-slate-950 text-slate-600 dark:text-slate-400 flex flex-col flex-shrink-0 transition-transform duration-300 border-r border-slate-200 dark:border-slate-800 md:relative md:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-          <h1 className="font-display text-2xl font-extrabold text-brand-primary dark:text-brand-accent leading-tight">EduMate</h1>
+          <h1 className="font-display text-2xl font-extrabold text-brand-primary dark:text-brand-accent leading-tight">Wiselearn</h1>
           <button onClick={() => setIsSidebarOpen(false)} className="md:hidden p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10">
             <X className="w-6 h-6" />
           </button>

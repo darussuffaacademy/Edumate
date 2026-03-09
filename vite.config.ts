@@ -12,16 +12,21 @@ export default defineConfig(({mode}) => {
       tailwindcss(),
       VitePWA({
         registerType: 'autoUpdate',
-        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
+        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg', 'logo.svg'],
         workbox: {
           maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5MB
         },
         manifest: {
-          name: 'EduMate SSLC',
-          short_name: 'EduMate',
+          name: 'Wiselearn SSLC',
+          short_name: 'Wiselearn',
           description: 'Your companion for SSLC English curriculum',
           theme_color: '#ffffff',
           icons: [
+            {
+              src: 'logo.svg',
+              sizes: 'any',
+              type: 'image/svg+xml'
+            },
             {
               src: 'pwa-192x192.png',
               sizes: '192x192',

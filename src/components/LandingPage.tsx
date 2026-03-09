@@ -43,7 +43,7 @@ export default function LandingPage({ onSelectClass, language, setLanguage }: { 
           <div className="w-20 h-20 bg-brand-primary dark:bg-brand-accent rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-brand-primary/20 dark:shadow-brand-accent/20">
             <GraduationCap className="w-10 h-10 text-brand-accent dark:text-brand-primary" />
           </div>
-          <h1 className="font-display text-5xl md:text-6xl font-extrabold mb-4 tracking-tight text-brand-primary dark:text-white">EduMate</h1>
+          <h1 className="font-display text-5xl md:text-6xl font-extrabold mb-4 tracking-tight text-brand-primary dark:text-white">Wiselearn</h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 font-semibold">
             {language === 'en' ? 'Select your class to begin learning' : language === 'ml' ? 'പഠനം ആരംഭിക്കാൻ നിങ്ങളുടെ ക്ലാസ് തിരഞ്ഞെടുക്കുക' : 'Select your class to begin learning / പഠനം ആരംഭിക്കാൻ നിങ്ങളുടെ ക്ലാസ് തിരഞ്ഞെടുക്കുക'}
           </p>

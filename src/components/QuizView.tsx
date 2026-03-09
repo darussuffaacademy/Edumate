@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { Play, RotateCcw, CheckCircle, XCircle, HelpCircle, ChevronRight, Settings, BarChart, Trophy, AlertCircle } from 'lucide-react';
 import { Language } from '../data/curriculum';
 import { motion, AnimatePresence } from 'framer-motion';
+import { saveQuizScore } from '../utils/progressTracker';
 
 interface QuizQuestion {
   q_id: string;
@@ -15,9 +16,10 @@ interface QuizQuestion {
 interface QuizViewProps {
   questions: QuizQuestion[];
   language: Language;
+  quizId?: string;
 }
 
-export default function QuizView({ questions, language }: QuizViewProps) {
+export default function QuizView({ questions, language, quizId = 'default_quiz' }: QuizViewProps) {
   const [quizState, setQuizState] = useState<'setup' | 'active' | 'result'>('setup');
   const [questionCount, setQuestionCount] = useState(20);
   const [activeQuestions, setActiveQuestions] = useState<QuizQuestion[]>([]);
@@ -112,6 +114,8 @@ export default function QuizView({ questions, language }: QuizViewProps) {
       setCurrentQuestionIndex(prev => prev + 1);
       setShowExplanation(false);
     } else {
+      const finalScore = calculateScore();
+      saveQuizScore(quizId, Math.round((finalScore / activeQuestions.length) * 100));
       setQuizState('result');
     }
   };

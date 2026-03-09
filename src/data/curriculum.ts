@@ -48,6 +48,21 @@ import {
   englishLesson14PreferenceNationale,
   englishLesson15Mirror
 } from './english_unit5_songs_of_the_self';
+import {
+  lessonChithrakari,
+  lessonKhalbilenilavu,
+  lessonOruPakshikunjinteMaranam
+} from './malayalam_ii_unit1';
+import {
+  lessonVishukkani,
+  lessonAnandashrukkal,
+  lessonKethaluEtakkuri
+} from './malayalam_ii_unit2';
+import {
+  lessonCharithramRachichaNatakam,
+  lessonEnteBhasha,
+  lessonVijnanaBhasha
+} from './malayalam_ii_unit3';
 
 export type BilingualString = {
   en: string;
@@ -557,6 +572,41 @@ export const sslcCurriculum: Subject[] = [
             glossary: [],
             quiz: []
           }
+        ]
+      }
+    ]
+  },
+  {
+    id: "sub-malayalam-ii",
+    title: { en: "Malayalam II", ml: "മലയാളം II" },
+    icon: "🌺",
+    color: "bg-[#ec4899]",
+    units: [
+      {
+        id: "u-mal-ii-1",
+        title: { en: "Unit 1: Arangum Porulum", ml: "യൂണിറ്റ് 1: അരങ്ങും പൊരുളും" },
+        lessons: [
+          lessonChithrakari,
+          lessonKhalbilenilavu,
+          lessonOruPakshikunjinteMaranam
+        ]
+      },
+      {
+        id: "u-mal-ii-2",
+        title: { en: "Unit 2: Ekodarasodharar Naam", ml: "യൂണിറ്റ് 2: ഏകോദരസോദരർ നാം" },
+        lessons: [
+          lessonVishukkani,
+          lessonAnandashrukkal,
+          lessonKethaluEtakkuri
+        ]
+      },
+      {
+        id: "u-mal-ii-3",
+        title: { en: "Unit 3: Annavinnarivaay Niravaay", ml: "യൂണിറ്റ് 3: അന്നവിന്നറിവായ് നിറവായ്" },
+        lessons: [
+          lessonCharithramRachichaNatakam,
+          lessonEnteBhasha,
+          lessonVijnanaBhasha
         ]
       }
     ]

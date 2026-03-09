@@ -3,33 +3,35 @@ import { BookOpen, FlaskConical, PenTool, Volume2, CheckCircle2, PlayCircle, Fil
 import { Language } from '../data/curriculum';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import VirtualLab from './VirtualLab';
-import ChemistryInteractive from './ChemistryInteractive';
-import SoundWavesInteractive from './SoundWavesInteractive';
-import { SwingAnimation } from './SwingAnimation';
+import VirtualLab from '../labs/VirtualLab';
+import ChemistryInteractive from '../labs/chemistry/ChemistryInteractive';
+import SoundWavesInteractive from '../labs/physics/SoundWavesInteractive';
+import { SwingAnimation } from '../labs/mechanics/SwingAnimation';
 import { LensSimulation } from '../labs/optics/LensSimulation';
-import { NewtonDisc } from './NewtonDisc';
+import { NewtonDisc } from '../labs/optics/NewtonDisc';
 import { PrismSimulation } from '../labs/optics/PrismSimulation';
-import { RainbowSimulation } from './RainbowSimulation';
-import { EyeDefectSimulation } from './EyeDefectSimulation';
-import { RightHandThumbRuleSimulation } from './RightHandThumbRuleSimulation';
-import { SolenoidSimulation } from './SolenoidSimulation';
-import { DCMotorSimulation } from './DCMotorSimulation';
-import { LoudspeakerSimulation } from './LoudspeakerSimulation';
-import { FlemingLeftHandSimulation } from './FlemingLeftHandSimulation';
-import { JoulesLawSimulation } from './JoulesLawSimulation';
-import { PowerCalculationSimulation } from './PowerCalculationSimulation';
-import { LampComparisonSimulation } from './LampComparisonSimulation';
-import QuizEngine from './quiz/QuizEngine';
+import { RainbowSimulation } from '../labs/optics/RainbowSimulation';
+import { EyeDefectSimulation } from '../labs/optics/EyeDefectSimulation';
+import { RightHandThumbRuleSimulation } from '../labs/physics/RightHandThumbRuleSimulation';
+import { SolenoidSimulation } from '../labs/physics/SolenoidSimulation';
+import { DCMotorSimulation } from '../labs/physics/DCMotorSimulation';
+import { LoudspeakerSimulation } from '../labs/physics/LoudspeakerSimulation';
+import { FlemingLeftHandSimulation } from '../labs/physics/FlemingLeftHandSimulation';
+import { JoulesLawSimulation } from '../labs/physics/JoulesLawSimulation';
+import { PowerCalculationSimulation } from '../labs/physics/PowerCalculationSimulation';
+import { LampComparisonSimulation } from '../labs/physics/LampComparisonSimulation';
+import QuizView from './QuizView';
 import { GeneratorSimulation } from '../labs/physics/GeneratorSimulation';
 import { TransformerSimulation } from '../labs/physics/TransformerSimulation';
-import { HouseholdCircuitSimulation } from './HouseholdCircuitSimulation';
+import { HouseholdCircuitSimulation } from '../labs/physics/HouseholdCircuitSimulation';
 import { LeverSimulation } from '../labs/mechanics/LeverSimulation';
 import { PulleySimulation } from '../labs/mechanics/PulleySimulation';
-import { GearSimulation } from './GearSimulation';
-import { InclinedPlaneSimulation } from './InclinedPlaneSimulation';
+import { GearSimulation } from '../labs/mechanics/GearSimulation';
+import { InclinedPlaneSimulation } from '../labs/mechanics/InclinedPlaneSimulation';
 import { BarMagnetSimulation } from '../labs/physics/BarMagnetSimulation';
-import { PendulumSimulation } from './PendulumSimulation';
+import { PendulumSimulation } from '../labs/mechanics/PendulumSimulation';
+
+import { markLessonComplete } from '../utils/progressTracker';
 
 export default function LessonView({ lesson, language, onBack, subjectId, selectedClass }: { lesson: any, language: Language, onBack: () => void, subjectId?: string | null, selectedClass?: string }) {
   const [activeTab, setActiveTab] = useState<'read' | 'experiment' | 'quiz' | 'glossary' | 'sample_questions'>('read');
@@ -37,6 +39,12 @@ export default function LessonView({ lesson, language, onBack, subjectId, select
   const [showExplanation, setShowExplanation] = useState(false);
   const [sidebarWidth, setSidebarWidth] = useState(320);
   const isResizing = useRef(false);
+
+  useEffect(() => {
+    if (lesson?.id) {
+      markLessonComplete(lesson.id);
+    }
+  }, [lesson?.id]);
 
   const isEnglishSubject = subjectId === 'sub-english';
   const glossaryLabel = isEnglishSubject 
@@ -585,7 +593,7 @@ export default function LessonView({ lesson, language, onBack, subjectId, select
             )}
 
             {activeTab === 'quiz' && (
-              <QuizEngine questions={lesson.quiz} language={language} />
+              <QuizView questions={lesson.quiz} language={language} quizId={lesson.id} />
             )}
 
             {activeTab === 'sample_questions' && lesson.sample_questions && (

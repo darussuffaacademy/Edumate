@@ -3,33 +3,16 @@ import { BookOpen, FlaskConical, PenTool, Volume2, CheckCircle2, PlayCircle, Fil
 import { Language } from '../data/curriculum';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import VirtualLab from '../labs/VirtualLab';
 import ChemistryInteractive from '../labs/chemistry/ChemistryInteractive';
 import SoundWavesInteractive from '../labs/physics/SoundWavesInteractive';
-import { SwingAnimation } from '../labs/mechanics/SwingAnimation';
 import { LensSimulation } from '../labs/optics/LensSimulation';
-import { NewtonDisc } from '../labs/optics/NewtonDisc';
 import { PrismSimulation } from '../labs/optics/PrismSimulation';
-import { RainbowSimulation } from '../labs/optics/RainbowSimulation';
-import { EyeDefectSimulation } from '../labs/optics/EyeDefectSimulation';
-import { RightHandThumbRuleSimulation } from '../labs/physics/RightHandThumbRuleSimulation';
-import { SolenoidSimulation } from '../labs/physics/SolenoidSimulation';
-import { DCMotorSimulation } from '../labs/physics/DCMotorSimulation';
-import { LoudspeakerSimulation } from '../labs/physics/LoudspeakerSimulation';
-import { FlemingLeftHandSimulation } from '../labs/physics/FlemingLeftHandSimulation';
-import { JoulesLawSimulation } from '../labs/physics/JoulesLawSimulation';
-import { PowerCalculationSimulation } from '../labs/physics/PowerCalculationSimulation';
-import { LampComparisonSimulation } from '../labs/physics/LampComparisonSimulation';
-import QuizView from './QuizView';
 import { GeneratorSimulation } from '../labs/physics/GeneratorSimulation';
 import { TransformerSimulation } from '../labs/physics/TransformerSimulation';
-import { HouseholdCircuitSimulation } from '../labs/physics/HouseholdCircuitSimulation';
 import { LeverSimulation } from '../labs/mechanics/LeverSimulation';
 import { PulleySimulation } from '../labs/mechanics/PulleySimulation';
-import { GearSimulation } from '../labs/mechanics/GearSimulation';
-import { InclinedPlaneSimulation } from '../labs/mechanics/InclinedPlaneSimulation';
 import { BarMagnetSimulation } from '../labs/physics/BarMagnetSimulation';
-import { PendulumSimulation } from '../labs/mechanics/PendulumSimulation';
+import QuizView from './QuizView';
 
 import { markLessonComplete } from '../utils/progressTracker';
 
@@ -170,16 +153,6 @@ export default function LessonView({ lesson, language, onBack, subjectId, select
           </div>
         );
       case 'img':
-        if (block.customId === 'swing-animation') {
-          return (
-            <div key={idx} className="my-8">
-              <SwingAnimation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
         if (block.customId === 'lens-simulation') {
           return (
             <div key={idx} className="my-8">
@@ -190,120 +163,10 @@ export default function LessonView({ lesson, language, onBack, subjectId, select
             </div>
           );
         }
-        if (block.customId === 'newton-disc-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <NewtonDisc />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
         if (block.customId === 'prism-simulation') {
           return (
             <div key={idx} className="my-8">
               <PrismSimulation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
-        if (block.customId === 'rainbow-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <RainbowSimulation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
-        if (block.customId === 'eye-defect-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <EyeDefectSimulation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
-        if (block.customId === 'right-hand-thumb-rule-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <RightHandThumbRuleSimulation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
-        if (block.customId === 'solenoid-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <SolenoidSimulation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
-        if (block.customId === 'dc-motor-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <DCMotorSimulation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
-        if (block.customId === 'loudspeaker-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <LoudspeakerSimulation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
-        if (block.customId === 'fleming-left-hand-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <FlemingLeftHandSimulation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
-        if (block.customId === 'joules-law-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <JoulesLawSimulation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
-        if (block.customId === 'power-calculation-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <PowerCalculationSimulation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
-        if (block.customId === 'lamp-comparison-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <LampComparisonSimulation />
               <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
                 <TextContent enText={en} mlText={ml} />
               </div>
@@ -330,40 +193,10 @@ export default function LessonView({ lesson, language, onBack, subjectId, select
             </div>
           );
         }
-        if (block.customId === 'household-circuit-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <HouseholdCircuitSimulation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
         if (block.customId === 'bar-magnet-simulation') {
           return (
             <div key={idx} className="my-8">
               <BarMagnetSimulation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
-        if (block.customId === 'inclined-plane-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <InclinedPlaneSimulation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
-        if (block.customId === 'pendulum-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <PendulumSimulation />
               <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
                 <TextContent enText={en} mlText={ml} />
               </div>
@@ -384,16 +217,6 @@ export default function LessonView({ lesson, language, onBack, subjectId, select
           return (
             <div key={idx} className="my-8">
               <PulleySimulation />
-              <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
-                <TextContent enText={en} mlText={ml} />
-              </div>
-            </div>
-          );
-        }
-        if (block.customId === 'gear-simulation') {
-          return (
-            <div key={idx} className="my-8">
-              <GearSimulation />
               <div className="text-center text-sm text-slate-500 dark:text-slate-400 mt-3 italic font-medium">
                 <TextContent enText={en} mlText={ml} />
               </div>
@@ -571,9 +394,7 @@ export default function LessonView({ lesson, language, onBack, subjectId, select
             )}
 
             {activeTab === 'experiment' && (
-              lesson.id === 'sc-science-10-photosynthesis-v1' ? (
-                <VirtualLab language={language} />
-              ) : lesson.id === 'sc-chem-10-nomenclature' ? (
+              lesson.id === 'sc-chem-10-nomenclature' ? (
                 <ChemistryInteractive language={language} />
               ) : lesson.id === 'sc-phy-10-sound' ? (
                 <SoundWavesInteractive language={language} />

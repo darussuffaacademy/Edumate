@@ -1,7 +1,7 @@
 import { Subject, Language } from '../data/curriculum';
 import { ArrowLeft, Clock, CheckCircle2 } from 'lucide-react';
 
-export default function ChapterList({ subject, language, onSelectLesson, onBack }: { subject: Subject, language: Language, onSelectLesson: (id: string) => void, onBack: () => void }) {
+export default function ChapterList({ subject, language, onSelectLesson, onBack, showHeader = true }: { subject: Subject, language: Language, onSelectLesson: (id: string) => void, onBack: () => void, showHeader?: boolean }) {
   const renderInline = (str: any) => {
     if (!str) return '';
     if (language === 'bilingual') return `${str.en} / ${str.ml}`;
@@ -10,17 +10,19 @@ export default function ChapterList({ subject, language, onSelectLesson, onBack 
 
   return (
     <div className="p-2 sm:p-4 md:p-8 max-w-4xl mx-auto">
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 mb-6 sm:mb-10 bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors duration-300">
-        <div className="text-4xl sm:text-6xl w-16 h-16 sm:w-20 sm:h-20 bg-slate-50 dark:bg-slate-700 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-inner">
-          {subject.icon}
+      {showHeader && (
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 mb-6 sm:mb-10 bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors duration-300">
+          <div className="text-4xl sm:text-6xl w-16 h-16 sm:w-20 sm:h-20 bg-slate-50 dark:bg-slate-700 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-inner">
+            {subject.icon}
+          </div>
+          <div className="text-center sm:text-left">
+            <h2 className="font-display text-xl sm:text-3xl font-extrabold text-brand-primary dark:text-white">{renderInline(subject.title)}</h2>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-semibold mt-1">
+              {subject.units.length} {language === 'en' ? 'Units' : language === 'ml' ? 'യൂണിറ്റുകൾ' : 'Units / യൂണിറ്റുകൾ'}
+            </p>
+          </div>
         </div>
-        <div className="text-center sm:text-left">
-          <h2 className="font-display text-xl sm:text-3xl font-extrabold text-brand-primary dark:text-white">{renderInline(subject.title)}</h2>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-semibold mt-1">
-            {subject.units.length} {language === 'en' ? 'Units' : language === 'ml' ? 'യൂണിറ്റുകൾ' : 'Units / യൂണിറ്റുകൾ'}
-          </p>
-        </div>
-      </div>
+      )}
 
       <div className="space-y-4 sm:space-y-8">
         {subject.units.map((unit, idx) => (

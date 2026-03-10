@@ -201,7 +201,17 @@ export default function QuizView({ questions, language, quizId = 'default_quiz' 
   // Active Quiz Screen
   if (quizState === 'active') {
     const currentQuestion = activeQuestions[currentQuestionIndex];
+    
+    if (!currentQuestion) {
+      return null;
+    }
+
     const currentOptions = shuffledOptions[currentQuestion.q_id];
+    
+    if (!currentOptions) {
+      return null;
+    }
+
     const selectedAnswer = selectedAnswers[currentQuestion.q_id];
     const isCorrect = selectedAnswer === currentQuestion.answer;
 
